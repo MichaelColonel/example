@@ -9,13 +9,17 @@
 void
 image(const char* filename = 0)
 {
+	if (filename == 0) {
+		std::cout << "Usage: root -l -x \"image.C(\\\"filename.root\\\")\" " << std::endl;
+		return;
+	}
 	TFile* file = TFile::Open(filename);
 
 	TH2D* pos = dynamic_cast<TH2D*>(file->Get("position_object"));
 	
 	Int_t minybin = 10;
 	Int_t maxybin = 50;
-	TH1D* pos_prof = pos->ProjectionX( " ", minybin, maxybin, "[cutg]");
+	TH1D* pos_prof = pos->ProjectionX( "position_object_projection", minybin, maxybin, "[cutg]");
 
 	for ( Int_t i = 1; i <= pos_prof->GetNbinsX(); ++i) {
 		Double_t p = pos_prof->GetBinContent(i);
