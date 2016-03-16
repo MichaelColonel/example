@@ -17,8 +17,8 @@ image(const char* filename = 0)
 
 	TH2D* pos = dynamic_cast<TH2D*>(file->Get("position_object"));
 	
-	Int_t minybin = 10;
-	Int_t maxybin = 50;
+	Int_t minybin = 3;
+	Int_t maxybin = 18;
 	TH1D* pos_prof = pos->ProjectionX( "position_object_projection", minybin, maxybin, "[cutg]");
 
 	for ( Int_t i = 1; i <= pos_prof->GetNbinsX(); ++i) {

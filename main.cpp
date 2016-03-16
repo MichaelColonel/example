@@ -25,7 +25,8 @@
 #include "trec_tracks_reconstruction.hh"
 
 
-int main(void)
+int
+main( int argc, char** argv)
 {
 	TREC::HitsPositionsVector positions;
 	TREC::MainTracksVector mains;
@@ -55,11 +56,18 @@ int main(void)
 		}
 	}
 
+	int binx = 60; // histogram bins along X-axis
+	int biny = 60; // histogram bins along Y-axis
 	TREC::TracksReconstruction rec( mains, fulls,
 		-3.0 * CLHEP::cm, 3.0 * CLHEP::cm,
 		-3.0 * CLHEP::cm, 3.0 * CLHEP::cm,
-		60, 60);
-	rec.reconstruct( 150, 215, 215);
+		binx, biny);
+
+	int slice_obj_min = 150; // min slice number of calorimeter, object exposure
+	int slice_obj_max = 213; // max slice number of calorimeter, object exposure
+	int slice_clr_max = 213; // max slice number of calorimeter, Bragg Peak
+
+	rec.reconstruct( slice_obj_min, slice_obj_max, slice_clr_max);
 	rec.save("test.root"); 
 
 	return 0;
