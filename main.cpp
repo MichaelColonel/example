@@ -19,11 +19,10 @@
 
 #include <iostream>
 
-#include "trec_system_configure.hh"
-#include "trec_hits_positions.hh"
-#include "trec_track_coordinates.hh"
-#include "trec_tracks_reconstruction.hh"
-
+#include <trec_system_configure.hh>
+#include <trec_hits_positions.hh>
+#include <trec_track_coordinates.hh>
+#include <trec_tracks_reconstruction.hh>
 
 int
 main( int argc, char** argv)
