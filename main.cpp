@@ -25,7 +25,7 @@
 #include <trec_tracks_reconstruction.hh>
 
 int
-main( int argc, char** argv)
+main(void)
 {
 	TREC::HitsPositionsVector positions;
 	TREC::MainTracksVector mains;

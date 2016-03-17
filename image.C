@@ -17,8 +17,8 @@ image(const char* filename = 0)
 
 	TH2D* pos = dynamic_cast<TH2D*>(file->Get("position_object"));
 	
-	Int_t minybin = 3;
-	Int_t maxybin = 18;
+	Int_t minybin = 10;
+	Int_t maxybin = 50;
 	TH1D* pos_prof = pos->ProjectionX( "position_object_projection", minybin, maxybin, "[cutg]");
 
 	for ( Int_t i = 1; i <= pos_prof->GetNbinsX(); ++i) {
@@ -35,10 +35,12 @@ image(const char* filename = 0)
 	canvas->Divide( 1, 2);
 	canvas->cd(1);
 
+	pos->SetTitle("Radiographic image");
 	pos->SetXTitle("Size X (mm)");
 	pos->SetYTitle("Size Y (mm)");
 	pos->Draw("colz");
 
+	pos_prof->SetTitle("Projection");
 	pos_prof->SetXTitle("Size X (mm)");
 	pos_prof->SetYTitle("Polystyrene Equivalent Thickness (cm)");
 

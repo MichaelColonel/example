@@ -7,7 +7,7 @@ LIBS = `geant4-config --libs` \
 		`pkg-config --libs trec` \
 		`pkg-config --libs gsl`
 
-CFLAGS =  -Wall -O2 -std=gnu++0x `geant4-config --cflags` \
+CFLAGS =  -Wall -O2 -std=c++11 `geant4-config --cflags` \
 		`root-config --cflags` \
 		`pkg-config --cflags trec` \
 		`pkg-config --cflags gsl`
